@@ -2,15 +2,17 @@
 - name: Install and run a web service
   hosts: 127.0.0.1
   become: yes
-  
+  become_user: student
+  become_method: sudo
+
   tasks:
   - name: Install the web service
     yum:
-        name: httpd
-        status: present
-		
+      name: httpd
+      status: present
+      
   - name: httpd is started
     service:
-        name: httpd
-        state: started
-        enabled: true
+      name: httpd
+      state: started
+      enabled: true

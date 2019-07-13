@@ -1,0 +1,16 @@
+---
+- name: Install and run a web service
+  hosts: 127.0.0.1
+  become: yes
+  
+  tasks:
+  - name: Install the web service
+    yum:
+        name: httpd
+        status: present
+		
+  - name: httpd is started
+    service:
+        name: httpd
+        state: started
+        enabled: true
